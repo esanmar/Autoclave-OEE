@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Autoclave 2</title>
+
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <!-- Load jquery for ajax support -->
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="http://srvpw02/autoclave/vis.js"></script>
+  <script src="vis.js"></script>
+  <link href="vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p>
+  Datos del Autoclave 2
+</p>
+<div id="visualization"></div>
+<div id="loading">cargando...</div>
+
+<script type="text/javascript">
+  // load data via an ajax request. When the data is in, load the timeline
+  $.ajax({
+    url: './2017au2.json',
+    success: function (data) {
+      // hide the "loading..." message
+      document.getElementById('loading').style.display = 'none';
+
+      // DOM element where the Timeline will be attached
+      var container = document.getElementById('visualization');
+
+      // Create a DataSet (allows two way data-binding)
+      var items = new vis.DataSet(data);
+
+      // Configuration for the Timeline
+      var options = {locale: 'es'};
+
+      // Create a Timeline
+      var timeline = new vis.Timeline(container, items, options);
+    },
+    error: function (err) {
+      console.log('Error', err);
+      if (err.status === 0) {
+        alert('Failed to load data/basic.json.\nPlease run this example on a server.');
+      }
+      else {
+        alert('Failed to load data/basic.json.');
+      }
+    }
+  });
+</script>
+</body>
+</html>
