@@ -4,4 +4,4 @@ Shows on line autoclaves processes, cycles duration. OEE metric of the autoclave
 https://gestat.io/kpi/autoclave/au1tc.html
 
 
-![Autoclave](http://aerometalls.com/kpi/autoclave/autoclaves.png)
+![Autoclave](https://gestat.io/autoclave.png)
